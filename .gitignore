@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Future Sales data
+future_sales/data/
+
+# Student alcohol consumption (unfinished)
+student_alcohol_consumption/
+future_sales/notebooks/prototyping.ipynb
