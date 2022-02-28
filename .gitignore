@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+reddit_scrap/tmp
+reddit_scrap/logs/*
