@@ -1,16 +1,9 @@
 # data-science-playground
-A series of Data Science projects aimed at gaining new skills, having fun and learning how to make nice-looking plots.
+A series of data-related projects aimed at gaining new skills and having fun. If you have advice on how to improve things, feel free to open an issue. I cannot promise to implement it but it's nice to know what can be improved. 
 
 ## Project List
 
-1. Fifa 20 Player dataset
+1. Reddit Scrap
 
-A dataset containing over 18.000 players from Fifa 20. The main goal of this project is EDA. Source: https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset
-
-2. Stroke Prediction dataset
-
-A dataset containing over 5000 instance of patient meta-data. These can be used to predict whether a patient will have a stroke or not. The main goal of this project is the application of classication models. Source: https://www.kaggle.com/fedesoriano/stroke-prediction-dataset
-
-3. Reddit Scrap
-
-This is one of my first takes on data engineering, mainly using Apache Airflow and PostgreSQL. The main goal of this project was to get familiar with ETL pipelines and using APIs to fetch data from the web.
+A take on data engineering with the Reddit API, mainly using Apache Airflow and PostgreSQL. The goal of this project was to get familiar with ELT pipelines and using APIs to fetch data from the web.
+To run it, use `docker-compose`. You will get DAG import errors until you've run the `setup_environment` DAG.

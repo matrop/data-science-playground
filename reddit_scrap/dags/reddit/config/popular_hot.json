@@ -1,0 +1,25 @@
+{
+  "description": "Scrap hot reddit posts from all subreddits",
+  "subreddit": "popular",
+  "section": "hot",
+  "limit": 50,
+  "columns": {
+    "title": { "py": "str", "sql": "VARCHAR(500)" },
+    "subreddit": { "py": "str", "sql": "VARCHAR(50)" },
+    "downs": { "py": "int32", "sql": "INTEGER" },
+    "upvote_ratio": { "py": "str", "sql": "VARCHAR(50)" },
+    "subreddit_type": { "py": "str", "sql": "VARCHAR(50)" },
+    "ups": { "py": "int32", "sql": "INTEGER" },
+    "is_original_content": { "py": "bool", "sql": "boolean" },
+    "score": { "py": "int32", "sql": "INTEGER" },
+    "created": { "py": "str", "sql": "VARCHAR(50)" },
+    "over_18": { "py": "bool", "sql": "boolean" },
+    "spoiler": { "py": "bool", "sql": "boolean" },
+    "id": { "py": "str", "sql": "VARCHAR(50)" },
+    "is_video": { "py": "bool", "sql": "boolean" },
+    "section": { "py": "str", "sql": "VARCHAR(50)" },
+    "added": { "py": "str", "sql": "TIMESTAMP" }
+  },
+  "table": "popular_hot_posts",
+  "schema": "reddit_raw"
+}
