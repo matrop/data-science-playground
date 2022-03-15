@@ -8,7 +8,8 @@ from airflow.models import Variable
 
 # Airflow operators
 from airflow.providers.postgres.operators.postgres import PostgresOperator
-from dags.operators.transfer.FileToPostgresOperator import FileToPostgresOperator
+from airflow.operators.bash import BashOperator
+from operators.transfer.FileToPostgresOperator import FileToPostgresOperator
 from operators.transfer.RedditToFileOperator import RedditToFileOperator
 
 # Misc
@@ -38,7 +39,10 @@ with DAG(
     catchup=False,
 ) as dag:
     dag.doc_md=f"""Fetch posts from the '{dag_config['section']}' section of the '{dag_config['subreddit']}' subreddit 
-    and load it into the table '{dag_config['schema']}.{dag_config['table']}' in Postgres"""
+    and load it into the table '{dag_config['schema']}.{dag_config['table']}' in Postgres.
+    
+    Continue to run transformations in dbt based in {dag_config['dbt_project_dir']}
+    """
 
     reddit_to_file = RedditToFileOperator(
         task_id="reddit_to_file",
@@ -80,4 +84,9 @@ with DAG(
         postgres_conn_id="pg_database",
     )
 
-    reddit_to_file >> create_table_if_nexists >> file_to_postgres
+    run_transformations = BashOperator(
+        task_id="run_transformations",
+        bash_command=f"dbt run --project-dir {dag_config['dbt_project_dir']} --profiles-dir {dag_config['dbt_profiles_dir']}",
+    )
+
+    reddit_to_file >> create_table_if_nexists >> file_to_postgres >> run_transformations

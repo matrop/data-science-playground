@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: reddit_raw
+    schema: reddit_raw
+    tables:
+      - name: popular_hot_posts
+        identifier: popular_hot_posts

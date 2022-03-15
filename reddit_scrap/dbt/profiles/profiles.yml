@@ -1,0 +1,23 @@
+reddit_scrap:
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: postgres
+      port: 5432
+      user: airflow
+      pass: airflow
+      dbname: airflow
+      schema: reddit_raw
+
+    prod:
+      type: postgres
+      threads: 1
+      host: postgres
+      port: 5438
+      user: airflow
+      pass: airflow
+      dbname: airflow
+      schema: reddit_raw
+
+  target: dev

@@ -21,5 +21,8 @@
     "added": { "py": "str", "sql": "TIMESTAMP" }
   },
   "table": "popular_hot_posts",
-  "schema": "reddit_raw"
+  "schema": "reddit_raw",
+
+  "dbt_project_dir": "/opt/airflow/dbt/reddit_scrap",
+  "dbt_profiles_dir": "/opt/airflow/dbt/profiles"
 }
