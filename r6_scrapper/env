@@ -1,0 +1,4 @@
+POSTGRES_USER=matrops
+POSTGRES_PASSWORD=secretpassword
+POSTGRES_DB=r6tracker
+POSTGRES_HOST=postgres

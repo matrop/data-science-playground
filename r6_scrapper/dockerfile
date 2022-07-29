@@ -1,0 +1,10 @@
+FROM python:3.9.13
+
+WORKDIR /r6_scrapper/code
+
+COPY python/requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+CMD python -u main.py && tail -f /dev/null

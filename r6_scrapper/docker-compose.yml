@@ -1,0 +1,68 @@
+version: "3.7"
+
+services:
+
+  postgres:
+    image: postgres:14
+    container_name: ${POSTGRES_HOST}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./containers/postgres:/docker-entrypoint-initdb.d
+      - ./containers/postgres/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - r6tracker_network
+
+  python:
+    container_name: python
+    environment:
+      PYTHONUNBUFFERED: 1
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+    depends_on:
+      - ${POSTGRES_HOST}
+    build:
+      context: .
+    volumes:
+      - ./python:/r6_scrapper
+    networks:
+      - r6tracker_network
+
+  # grafana:
+  #   image: grafana/grafana:9.0.2
+  #   depends_on: 
+  #     - postgres
+  #   ports:
+  #     - 3001:3000
+  #   volumes:
+  #     - ./graphana:/etc/grafana/provisioning
+  #   networks:
+  #     - r6tracker_network
+
+  metabase:
+    image: metabase/metabase:v0.43.4
+    depends_on:
+      - python
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: ${POSTGRES_DB}
+      MB_DB_PORT: 5432
+      MB_DB_USER: ${POSTGRES_USER}
+      MB_DB_PASS: ${POSTGRES_PASSWORD}
+      MB_DB_HOST: ${POSTGRES_HOST}
+    ports:
+      - 3000:3000
+    volumes:
+      - ./metabase-data:/metabase-data
+    networks:
+      - r6tracker_network
+
+networks:
+  r6tracker_network:

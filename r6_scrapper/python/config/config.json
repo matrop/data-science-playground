@@ -1,0 +1,37 @@
+{
+    "request_data": {
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+    },
+    "request_delay_sec": 1,
+    "players": [
+        "SuchPlayMuchWow",
+        "ManyPlaySoWow",
+        "JustAnArchitect",
+        "MiicsFCB",
+        "Kr1mm3rhinEtwas",
+        "Dh_Axt"
+    ],
+    "exclude_seasons": [
+        "Y3S4: Wind Bastion",
+        "Y3S3: Grim Sky",
+        "Y3S2: Para Bellum",
+        "Y3S1: Chimera"
+    ],
+    "schema": [
+        ["K/D", "kd_ratio", "float"],
+        ["Kills/Match", "kills_per_match", "float"],
+        ["Kills", "kills", "int"],
+        ["Deaths", "deaths", "int"],
+        ["Win %", "win_percentage", "float"],
+        ["Wins", "wins", "int"],
+        ["Losses", "losses", "int"],
+        ["Abandons", "abandons", "int"],
+        ["Rank", "rank", "str"],
+        ["Max Rank", "max_rank", "str"],
+        ["MMR", "mmr", "int"],
+        ["Max MMR", "max_mmr", "int"],
+        ["n_matches", "matches_played", "int"]
+    ],
+    "save_path": "/tmp/",
+    "save_file": "r6.csv"
+}
