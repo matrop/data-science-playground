@@ -130,3 +130,5 @@ dmypy.json
 
 reddit_scrap/tmp
 reddit_scrap/logs/*
+
+r6_scrapper/containers/postgres
